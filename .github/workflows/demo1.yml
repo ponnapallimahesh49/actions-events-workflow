@@ -1,7 +1,7 @@
 name: Events Demo 1
 on: 
   pull_request:
-    types: [opened]
+    types: [opened, closed, reopened]
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -10,6 +10,10 @@ jobs:
         run: echo "${{ toJSON(github.event) }}"
       - name: Get code
         uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'  # Specify your desired Node version
       - name: Install dependencies
         run: npm ci
       - name: Test code
