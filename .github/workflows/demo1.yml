@@ -1,7 +1,7 @@
 name: Events Demo 1
 on: 
   pull_request:
-    types: [opened,closed]
+    types: [opened, closed, reopened]
 jobs:
   deploy:
     runs-on: ubuntu-latest
